@@ -15,15 +15,21 @@ class mLinkedList(data: String) {
 
     fun printAll() {
         var node: Node? = head
-        while (node != null) {
+        while (node?.next != null) {
             println(node.data)
             node = node.next
         }
     }
 
     fun get(index: Int): String {
+        var node: Node? = head
 
+        for (i in 0 until index) {
+            node = node?.next
+        }
 
-        return "name"
+        return node?.data ?: "데이터가 없습니다."
     }
+    
+
 }
