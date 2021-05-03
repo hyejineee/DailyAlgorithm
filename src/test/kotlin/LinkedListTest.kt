@@ -10,8 +10,22 @@ internal class LinkedListTest {
         linkedList.add("name")
         linkedList.add("bye")
 
-        assertEquals("bye", linkedList.get(3))
+        assertEquals("bye", linkedList.get("bye"))
     }
 
+    @Test
+    fun `데이터 삭제하기`() {
+        val linkedList = mLinkedList("first")
+
+        linkedList.add("hi")
+        linkedList.add("name")
+        linkedList.add("bye")
+
+        linkedList.delete("name")
+        
+        assertEquals("데이터가 없습니다.", linkedList.get("name"))
+
+
+    }
 
 }
