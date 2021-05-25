@@ -18,7 +18,7 @@ class mDoubleLinkedList(head: String) {
         tail = newNode
     }
 
-    fun addBeforeIndex(index: Int, data: String) {
+    fun addBeforeAt(index: Int, data: String) {
         val newNode = Node(data)
         var currentNode = head
         var currentIndex = 0
@@ -47,7 +47,7 @@ class mDoubleLinkedList(head: String) {
         }
     }
 
-    fun addAfterIndex(index: Int, data: String) {
+    fun addAfterAt(index: Int, data: String) {
         val newNode = Node(data)
 
         var currentNode = head
@@ -70,6 +70,38 @@ class mDoubleLinkedList(head: String) {
             currentIndex++
             currentNode = currentNode.next ?: break
         }
+    }
+
+    fun deleteAt(index: Int) {
+
+        var currentNode = head
+        var currentIndex = 0
+
+        if (index == 0) {
+            head.next?.prev = null
+            head = head.next ?: throw Exception()
+            return
+        }
+
+        while (true) {
+            if (currentIndex == index) {
+
+                if (currentNode.next == null) {
+                    currentNode.prev?.next = null
+                    tail = currentNode.prev!!
+                    break
+                }
+
+                currentNode.prev?.next = currentNode.next
+                currentNode.next?.prev = currentNode.prev
+
+                break
+            }
+
+            currentIndex++
+            currentNode = currentNode.next ?: break
+        }
+
     }
 
     fun all(): List<String> {
