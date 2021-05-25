@@ -41,7 +41,32 @@ class mDoubleLinkedList(head: String) {
                 currentNode.prev = newNode
                 break
             }
-            
+
+            currentIndex++
+            currentNode = currentNode.next ?: break
+        }
+    }
+
+    fun addAfterIndex(index: Int, data: String) {
+        val newNode = Node(data)
+
+        var currentNode = head
+        var currentIndex = 0
+
+        while (true) {
+            if (currentIndex == index) {
+                currentNode.next?.prev = newNode
+
+                newNode.prev = currentNode
+                newNode.next = currentNode.next
+
+                currentNode.next = newNode
+
+                if (currentNode.data == tail.data) {
+                    tail = newNode
+                    break
+                }
+            }
             currentIndex++
             currentNode = currentNode.next ?: break
         }
