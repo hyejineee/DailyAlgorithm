@@ -18,6 +18,35 @@ class mDoubleLinkedList(head: String) {
         tail = newNode
     }
 
+    fun addBeforeIndex(index: Int, data: String) {
+        val newNode = Node(data)
+        var currentNode = head
+        var currentIndex = 0
+
+        if (index == 0) {
+            newNode.next = head
+            head.prev = newNode
+            head = newNode
+            return
+        }
+
+        while (true) {
+            if (currentIndex == index) {
+
+                currentNode.prev?.next = newNode
+
+                newNode.prev = currentNode.prev
+                newNode.next = currentNode
+
+                currentNode.prev = newNode
+                break
+            }
+            
+            currentIndex++
+            currentNode = currentNode.next ?: break
+        }
+    }
+
     fun all(): List<String> {
         var currentNode = head
         val list = mutableListOf<String>()
