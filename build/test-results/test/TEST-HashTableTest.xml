@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HashTableTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-26T05:27:01" hostname="hyeonhyejin-ui-MacBookPro.local" time="0.022">
+<testsuite name="HashTableTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-26T07:18:21" hostname="hyeonhyejin-ui-MacBookPro.local" time="0.022">
   <properties/>
-  <testcase name="chaining기법으로 충돌 해결하기" classname="HashTableTest" time="0.021"/>
-  <testcase name="데이터 삽입, 조회" classname="HashTableTest" time="0.001"/>
-  <system-out><![CDATA[a 's key 97
-a 's hash address 2
-b 's key 98
-b 's hash address 3
-c 's key 99
-c 's hash address 4
-an 's key 3117
-an 's hash address 2
-a 's key 97
-a 's hash address 2
-b 's key 98
-b 's hash address 3
-c 's key 99
-c 's hash address 4
-]]></system-out>
+  <testcase name="chaining 기법으로 충돌 상황 해결하기" classname="HashTableTest" time="0.022"/>
+  <testcase name="충돌 상황 만들기" classname="HashTableTest" time="0.0"/>
+  <testcase name="데이터 삽입, 조회" classname="HashTableTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

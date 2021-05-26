@@ -1,29 +1,47 @@
 class mHashTable {
     private val table = MutableList(10) { "" }
-
-    /**
-     *   - 데이터 삽입 메소드 만들기 : put
-     *      -> key를 받아서 해쉬 키 생성
-     *      -> 해쉬 키에 해당 하는 곳에 데이터 저장
-     *   - 전체 데이처를 볼 수 있는 메서드 만들기 : all
-     *      -> 전체 해쉬 테이블을 순회하면서 pair list로 만들어서 반환
-     * */
+    private val chainingTable = MutableList(10) { emptyList<Pair<Int, String>>() }
 
     fun put(key: String, value: String) {
-        println("$key 's key ${getKey(key)}")
-
         val hashKey = createHashAddress(getKey(key))
-        println("$key 's hash address ${createHashAddress(getKey(key))}")
         table[hashKey] = value
+    }
 
-        //chaining기법으로 충돌 해결하기
+    fun putWithChaining(key: String, value: String) {
+        val hashKey = getKey(key)
+        val hashAddress = createHashAddress(hashKey)
 
+        if (chainingTable[hashAddress].isEmpty()) {
+            chainingTable[hashAddress] = listOf(Pair(hashKey, value))
+            return
+        }
+
+        chainingTable[hashAddress] =
+            chainingTable[hashAddress]
+                .toMutableList()
+                .apply {
+                    for (i in 0..this.size) {
+                        if (this[i].first == hashKey) {
+                            this[i] = Pair(hashKey, value)
+                            break
+                        }
+
+                        this.add(Pair(hashKey, value))
+                    }
+                }
 
     }
+
+    fun get(key: String) = table[createHashAddress(getKey(key))]
+
+    fun getWithChaining(key: String) =
+        chainingTable[createHashAddress(getKey(key))]
+            .find { it.first == getKey(key) }
+            ?.second
 
     private fun getKey(key: String) = key.hashCode()
 
     private fun createHashAddress(key: Int) = key % 5
 
-    fun get(key: String) = table[createHashAddress(getKey(key))]
+
 }
