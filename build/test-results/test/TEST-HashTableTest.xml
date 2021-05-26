@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HashTableTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-26T04:01:19" hostname="hyeonhyejin-ui-MacBookPro.local" time="0.018">
+<testsuite name="HashTableTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-26T05:27:01" hostname="hyeonhyejin-ui-MacBookPro.local" time="0.022">
   <properties/>
-  <testcase name="데이터 삽입" classname="HashTableTest" time="0.018"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="chaining기법으로 충돌 해결하기" classname="HashTableTest" time="0.021"/>
+  <testcase name="데이터 삽입, 조회" classname="HashTableTest" time="0.001"/>
+  <system-out><![CDATA[a 's key 97
+a 's hash address 2
+b 's key 98
+b 's hash address 3
+c 's key 99
+c 's hash address 4
+an 's key 3117
+an 's hash address 2
+a 's key 97
+a 's hash address 2
+b 's key 98
+b 's hash address 3
+c 's key 99
+c 's hash address 4
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

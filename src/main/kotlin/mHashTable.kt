@@ -10,11 +10,20 @@ class mHashTable {
      * */
 
     fun put(key: String, value: String) {
-        val hashKey = createHashKey(key)
+        println("$key 's key ${getKey(key)}")
+
+        val hashKey = createHashAddress(getKey(key))
+        println("$key 's hash address ${createHashAddress(getKey(key))}")
         table[hashKey] = value
+
+        //chaining기법으로 충돌 해결하기
+
+
     }
 
-    private fun createHashKey(key: String) = key[0].toInt() % 5
+    private fun getKey(key: String) = key.hashCode()
 
-    fun get(key: String) = table[createHashKey(key)]
+    private fun createHashAddress(key: Int) = key % 5
+
+    fun get(key: String) = table[createHashAddress(getKey(key))]
 }
