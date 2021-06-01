@@ -34,15 +34,41 @@ internal class mBinarySerarchTreeTest {
 
         assertThat(
             true,
-            equalTo(binarySearchTree.find(10))
+            equalTo(binarySearchTree.find(14))
         )
 
-        binarySearchTree.delete(10)
+//        binarySearchTree.delete(14)
+//
+//        assertThat(
+//            false,
+//            equalTo(binarySearchTree.find(14))
+//        )
+//
+//        assertThat(
+//            true,
+//            equalTo(binarySearchTree.find(11))
+//        )
+//
+//        assertThat(
+//            true,
+//            equalTo(binarySearchTree.find(10))
+//        )
+
+        binarySearchTree.delete(22)
+
+        assertThat(
+            true,
+            equalTo(binarySearchTree.find(23))
+        )
+
+        assertThat(
+            true,
+            equalTo(binarySearchTree.find(27))
+        )
 
         assertThat(
             false,
-            equalTo(binarySearchTree.find(10))
+            equalTo(binarySearchTree.find(22))
         )
-
     }
 }
