@@ -5,7 +5,7 @@ import java.util.*
 fun keyLogger(input: String): String {
     val right = Stack<Char>()
     val left = Stack<Char>()
-    
+
     input.forEach {
         when (it) {
             '-' -> {
@@ -27,7 +27,7 @@ fun keyLogger(input: String): String {
         }
 
     }
-
+    
     return (right + left).joinToString("") {
         it.toString()
     }

@@ -20,5 +20,13 @@ class keyLoggerTest {
                 keyLogger("ThIsIsS3Cr3t")
             )
         )
+
+        assertThat(
+            
+            "ADFC",
+            CoreMatchers.equalTo(
+                keyLogger("ABC<<D>E<<F>>--")
+            )
+        )
     }
 }
