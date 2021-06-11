@@ -14,7 +14,6 @@ internal class mBinarySerarchTreeTest {
             binarySearchTree.add(it)
         }
 
-
         data.forEach {
             assertThat(
                 true,
@@ -22,6 +21,7 @@ internal class mBinarySerarchTreeTest {
             )
         }
     }
+    
 
     @Test
     fun `데이터 삭제`() {
