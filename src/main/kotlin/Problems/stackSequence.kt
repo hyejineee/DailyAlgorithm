@@ -4,15 +4,9 @@ import java.util.*
 
 fun stackSequence(n: Int, sequence: IntArray): List<String> {
 
-    var stack = Stack<Int>()
-    var sequenceStack = Stack<Int>()
-
-    sequence.reversed().forEach {
-        sequenceStack.push(it)
-    }
-
+    val stack = Stack<Int>()
     var count = 1
-    var result = mutableListOf<String>()
+    val result = mutableListOf<String>()
 
     for (i in 0 until n) {
 
