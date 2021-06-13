@@ -8,6 +8,6 @@ fun sha256(s: String): String =
             update(s.toByteArray())
         }
         .digest()
-        .fold("", { str, it ->
+        .fold("") { str, it ->
             str + "%02x".format(it)
-        })
+        }
