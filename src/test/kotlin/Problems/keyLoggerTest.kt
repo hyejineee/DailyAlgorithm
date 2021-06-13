@@ -22,7 +22,6 @@ class keyLoggerTest {
         )
 
         assertThat(
-            
             "ADFC",
             CoreMatchers.equalTo(
                 keyLogger("ABC<<D>E<<F>>--")
