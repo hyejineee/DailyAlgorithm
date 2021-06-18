@@ -1,17 +1,16 @@
 package Problems
 
 fun scale(scale: IntArray): String {
-    var sum = 0
 
-    for (i in 0..scale.size - 2) {
-        val step = scale[i] - scale[i + 1]
+    val sum = (0..scale.size - 2).foldIndexed(0) { value: Int, acc: Int, index: Int ->
+        println("${value} : ${index} : ${acc}")
+        val step: Int = scale[index] - scale[index + 1]
 
         if (step != -1 && step != 1) {
             return "mixed"
         }
 
-        sum += step
-
+        acc + step
     }
 
     return if (sum > 0) {

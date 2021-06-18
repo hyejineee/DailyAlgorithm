@@ -27,24 +27,24 @@ internal class ScaleTest {
             equalTo(scale(array))
         )
     }
-
-    @Test
-    fun `내림차순`() {
-        val array = intArrayOf(8, 7, 6, 5, 4, 3, 2, 1)
-
-        assertThat(
-            "descending",
-            equalTo(scale(array))
-        )
-    }
-
-    @Test
-    fun `mixed`() {
-        val array = intArrayOf(8, 7, 6, 5, 1, 2, 3, 4)
-
-        assertThat(
-            "mixed",
-            equalTo(scale(array))
-        )
-    }
+//
+//    @Test
+//    fun `내림차순`() {
+//        val array = intArrayOf(8, 7, 6, 5, 4, 3, 2, 1)
+//
+//        assertThat(
+//            "descending",
+//            equalTo(scale(array))
+//        )
+//    }
+//
+//    @Test
+//    fun `mixed`() {
+//        val array = intArrayOf(8, 7, 6, 5, 1, 2, 3, 4)
+//
+//        assertThat(
+//            "mixed",
+//            equalTo(scale(array))
+//        )
+//    }
 }
