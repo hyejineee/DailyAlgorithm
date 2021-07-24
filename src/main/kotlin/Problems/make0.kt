@@ -37,8 +37,6 @@ fun calculate(formula: String): Int {
             else -> result -= numbers[index + 1].toInt()
         }
     }
-
-//    println("formular : $formula, result : $result")
     return result
 }
 
