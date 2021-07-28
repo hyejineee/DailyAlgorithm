@@ -6,45 +6,29 @@ data class TreeNode(
 
 fun main() {
     val bst = BST(TreeNode(21))
+    insertData(bst)
 
-//    insertData(bst)
-//
-//    println(bst.search(32))
-//    println(bst.search(19))
-//
-//    println(bst.delete(32))
-//    bst.circuit()
-//
-//    println(bst.delete(28))
-//    bst.circuit()
-
-    println("-----")
+    println(bst.search(32))
+    println(bst.search(19))
+    
+    bst.clear()
+    println()
+    println("-----자식이 2개인 노드 삭제하기1----------")
+    println()
 
     insertDataWithOut16(bst)
     bst.delete(14)
     bst.circuit()
 
     bst.clear()
-    println("-----when right node is existed----------")
+    println()
+    println("-----자식이 2개인 노드 삭제하기2----------")
+    println()
+
     insertData(bst)
     bst.delete(14)
     bst.circuit()
 
-    bst.clear()
-    println("-----when right node is existed----------")
-    println()
-
-    insertRightTestData(bst)
-    bst.delete(28)
-    bst.circuit()
-
-    bst.clear()
-    println("-----when right node is not existed----------")
-    println()
-
-    insertRightTestDataWithOut31(bst)
-    bst.delete(28)
-    bst.circuit()
 }
 
 fun insertData(bst: BST) {
@@ -100,12 +84,12 @@ class BST(private var head: TreeNode) {
     }
 
     fun insert(node: TreeNode) {
-        var current = head
-        comparison(current, node)
+        val current = head
+        insertNode(current, node)
     }
 
     fun search(value: Int): Boolean {
-        var current = head
+        val current = head
         return searchTreeNode(current, value) != null
     }
 
@@ -207,14 +191,14 @@ class BST(private var head: TreeNode) {
         circuit(current, current.right)
     }
 
-    private fun comparison(current: TreeNode, target: TreeNode) {
+    private fun insertNode(current: TreeNode, target: TreeNode) {
         if (current.value < target.value) {
 
             current.right ?: run {
                 current.right = target
                 return
             }
-            comparison(current.right!!, target)
+            insertNode(current.right!!, target)
 
         } else {
 
@@ -222,7 +206,7 @@ class BST(private var head: TreeNode) {
                 current.left = target
                 return
             }
-            comparison(current.left!!, target)
+            insertNode(current.left!!, target)
         }
     }
 }
