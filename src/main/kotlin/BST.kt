@@ -1,11 +1,11 @@
-data class Node(
+data class TreeNode(
     val value: Int,
-    var left: Node? = null,
-    var right: Node? = null
+    var left: TreeNode? = null,
+    var right: TreeNode? = null
 )
 
 fun main() {
-    val bst = BST(Node(21))
+    val bst = BST(TreeNode(21))
 
 //    insertData(bst)
 //
@@ -48,70 +48,70 @@ fun main() {
 }
 
 fun insertData(bst: BST) {
-    bst.insert(Node(14))
-    bst.insert(Node(28))
-    bst.insert(Node(11))
-    bst.insert(Node(18))
-    bst.insert(Node(25))
-    bst.insert(Node(32))
-    bst.insert(Node(15))
-    bst.insert(Node(16))
-    bst.insert(Node(19))
+    bst.insert(TreeNode(14))
+    bst.insert(TreeNode(28))
+    bst.insert(TreeNode(11))
+    bst.insert(TreeNode(18))
+    bst.insert(TreeNode(25))
+    bst.insert(TreeNode(32))
+    bst.insert(TreeNode(15))
+    bst.insert(TreeNode(16))
+    bst.insert(TreeNode(19))
 }
 
 fun insertDataWithOut16(bst: BST) {
-    bst.insert(Node(14))
-    bst.insert(Node(28))
-    bst.insert(Node(11))
-    bst.insert(Node(18))
-    bst.insert(Node(25))
-    bst.insert(Node(32))
-    bst.insert(Node(15))
-    bst.insert(Node(19))
+    bst.insert(TreeNode(14))
+    bst.insert(TreeNode(28))
+    bst.insert(TreeNode(11))
+    bst.insert(TreeNode(18))
+    bst.insert(TreeNode(25))
+    bst.insert(TreeNode(32))
+    bst.insert(TreeNode(15))
+    bst.insert(TreeNode(19))
 }
 
 fun insertRightTestData(bst: BST) {
-    bst.insert(Node(14))
-    bst.insert(Node(28))
-    bst.insert(Node(11))
-    bst.insert(Node(18))
-    bst.insert(Node(25))
-    bst.insert(Node(32))
-    bst.insert(Node(30))
-    bst.insert(Node(33))
-    bst.insert(Node(31))
+    bst.insert(TreeNode(14))
+    bst.insert(TreeNode(28))
+    bst.insert(TreeNode(11))
+    bst.insert(TreeNode(18))
+    bst.insert(TreeNode(25))
+    bst.insert(TreeNode(32))
+    bst.insert(TreeNode(30))
+    bst.insert(TreeNode(33))
+    bst.insert(TreeNode(31))
 }
 
 fun insertRightTestDataWithOut31(bst: BST) {
-    bst.insert(Node(14))
-    bst.insert(Node(28))
-    bst.insert(Node(11))
-    bst.insert(Node(18))
-    bst.insert(Node(25))
-    bst.insert(Node(32))
-    bst.insert(Node(30))
-    bst.insert(Node(33))
+    bst.insert(TreeNode(14))
+    bst.insert(TreeNode(28))
+    bst.insert(TreeNode(11))
+    bst.insert(TreeNode(18))
+    bst.insert(TreeNode(25))
+    bst.insert(TreeNode(32))
+    bst.insert(TreeNode(30))
+    bst.insert(TreeNode(33))
 }
 
-class BST(private var head: Node) {
+class BST(private var head: TreeNode) {
 
     fun clear() {
-        head = Node(head.value, null, null)
+        head = TreeNode(head.value, null, null)
     }
 
-    fun insert(node: Node) {
+    fun insert(node: TreeNode) {
         var current = head
         comparison(current, node)
     }
 
     fun search(value: Int): Boolean {
         var current = head
-        return searchNode(current, value) != null
+        return searchTreeNode(current, value) != null
     }
 
     fun delete(value: Int): Boolean {
         val current = head
-        val result = searchWithParent(current, current, Node(value))
+        val result = searchWithParent(current, current, TreeNode(value))
 
         if (result.isEmpty()) {
             return false
@@ -157,14 +157,14 @@ class BST(private var head: Node) {
         return true
     }
 
-    private fun findMin(parent: Node, current: Node): List<Node> {
+    private fun findMin(parent: TreeNode, current: TreeNode): List<TreeNode> {
         if (current.left == null) {
             return listOf(parent, current)
         }
         return findMin(current, current.left!!)
     }
 
-    private fun searchWithParent(parent: Node = head, current: Node = head, target: Node): List<Node> {
+    private fun searchWithParent(parent: TreeNode = head, current: TreeNode = head, target: TreeNode): List<TreeNode> {
         if (current.value == target.value) {
             return listOf(parent, current)
         }
@@ -181,22 +181,22 @@ class BST(private var head: Node) {
         return searchWithParent(current, next, target)
     }
 
-    private fun searchNode(current: Node, target: Int): Node? {
+    private fun searchTreeNode(current: TreeNode, target: Int): TreeNode? {
         if (current.value == target) {
             return current
         }
 
-        var next: Node? = null
+        var next: TreeNode? = null
 
         next = when {
             current.value < target -> current.right ?: return null
             else -> current.left ?: return null
         }
 
-        return searchNode(next, target)
+        return searchTreeNode(next, target)
     }
 
-    fun circuit(parent: Node = head, current: Node? = head) {
+    fun circuit(parent: TreeNode = head, current: TreeNode? = head) {
         current ?: run {
             return
         }
@@ -207,7 +207,7 @@ class BST(private var head: Node) {
         circuit(current, current.right)
     }
 
-    private fun comparison(current: Node, target: Node) {
+    private fun comparison(current: TreeNode, target: TreeNode) {
         if (current.value < target.value) {
 
             current.right ?: run {
