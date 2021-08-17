@@ -1,21 +1,19 @@
-import Problems.installModem
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import kotlin.math.pow
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 
 fun main(args: Array<String>) {
-    with(BufferedReader(InputStreamReader(System.`in`))) {
-        val (n, m) = readLine().split(" ").map { it.toInt() }
+//    with(BufferedReader(InputStreamReader(System.`in`))) {
+//        val (n, m) = readLine().split(" ").map { it.toInt() }
+//
+//        val array = List(n) {
+//            readLine().toInt()
+//        }.sorted()
+//
+//        println(installModem(m, array))
+//    }
 
-        val array = List(n) {
-            readLine().toInt()
-        }.sorted()
-
-        println(installModem(m, array))
-    }
 }
 
 fun z(n: Long, r: Int, c: Int): Int {
