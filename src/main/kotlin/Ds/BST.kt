@@ -1,8 +1,5 @@
-data class TreeNode(
-    val value: Int,
-    var left: TreeNode? = null,
-    var right: TreeNode? = null
-)
+package Ds
+
 
 fun main() {
     val bst = BST(TreeNode(21))
@@ -10,7 +7,7 @@ fun main() {
 
     println(bst.search(32))
     println(bst.search(19))
-    
+
     bst.clear()
     println()
     println("-----자식이 2개인 노드 삭제하기1----------")
