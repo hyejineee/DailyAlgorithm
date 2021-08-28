@@ -45,6 +45,16 @@ fun main() {
     tree.delete(28)
     tree.printTree()
 
+    println("========== pre order ============")
+    tree.preOrder()
+
+    println("========== in order ============")
+    tree.inOrder()
+
+    println("========== post order ============")
+    tree.postOrder()
+
+
 }
 
 class BST2(private val head: TreeNode) {
@@ -55,6 +65,36 @@ class BST2(private val head: TreeNode) {
 
         printTree(current.left)
         printTree(current.right)
+    }
+
+    fun preOrder() = preOrder(head)
+
+    fun inOrder() = inOrder(head)
+
+    fun postOrder() = postOrder(head)
+
+    private fun postOrder(current: TreeNode?) {
+        current ?: return
+
+        postOrder(current.left)
+        postOrder(current.right)
+        println(current.value)
+    }
+
+    private fun inOrder(current: TreeNode?) {
+        current ?: return
+        inOrder(current.left)
+        println(current.value)
+        inOrder(current.right)
+    }
+
+    private fun preOrder(current: TreeNode?) {
+        current ?: return
+
+        println(current.value)
+
+        preOrder(current.left)
+        preOrder(current.right)
     }
 
     fun insert(data: Int) {
