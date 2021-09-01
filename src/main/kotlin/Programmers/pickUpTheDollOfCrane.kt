@@ -3,7 +3,6 @@ package Programmers
 import java.util.*
 
 fun pickUpTheDollOfCrane(board: Array<IntArray>, moves: IntArray): Int {
-
     val queueBoard = List<LinkedList<Int>>(board.size) {
         LinkedList()
     }
