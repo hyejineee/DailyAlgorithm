@@ -1,5 +1,6 @@
 package Programmers
 
+
 fun sortBoxer(weights: IntArray, head2head: Array<String>): IntArray = Array(weights.size) { index ->
     val winningRate =
         head2head[index].count { it == 'W' }.toDouble() / head2head[index].count { it == 'W' || it == 'N' }
@@ -8,31 +9,7 @@ fun sortBoxer(weights: IntArray, head2head: Array<String>): IntArray = Array(wei
 
     BoxerInfo(index, weights[index], winningRate, numberOfWinsHeavier)
 }
-    .sortedWith(Comparator { o1, o2 ->
-        when {
-            o1.winningRate < o2.winningRate -> 1
-            o1.winningRate > o2.winningRate -> -1
-            else -> {
-                when {
-                    o1.numberOfWinsHeavier < o2.numberOfWinsHeavier -> 1
-                    o1.numberOfWinsHeavier > o2.numberOfWinsHeavier -> -1
-                    else -> {
-                        when {
-                            o1.weight < o2.weight -> 1
-                            o1.weight > o2.weight -> -1
-                            else -> {
-                                when {
-                                    o1.boxerNumber > o2.boxerNumber -> 1
-                                    o1.boxerNumber < o2.boxerNumber -> -1
-                                    else -> 0
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    })
+    .sorted()
     .map {
         println(it)
         it.boxerNumber + 1
