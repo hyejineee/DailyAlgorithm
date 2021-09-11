@@ -5,13 +5,6 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 class RepeatBinaryConvertKtTest {
-    @Test
-    fun `이진수로 바꾸기 `() {
-        assertThat(
-            toBinary(10),
-            equalTo("1010")
-        )
-    }
 
     @Test
     fun `이진 변환 반복하기  `() {
@@ -21,6 +14,8 @@ class RepeatBinaryConvertKtTest {
                 intArrayOf(3, 3)
             )
         )
+
+        listOf(0).sorted()
     }
 
 

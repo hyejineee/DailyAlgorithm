@@ -16,6 +16,7 @@ fun sortBoxer(weights: IntArray, head2head: Array<String>): IntArray = Array(wei
     }
     .toIntArray()
 
+
 //class Solution {
 //    fun solution(weights: IntArray, head2head: Array<String>): IntArray {
 //        val listOfWin = head2head.map {
