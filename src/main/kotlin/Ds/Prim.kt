@@ -1,5 +1,7 @@
 package Ds
 
+import java.util.*
+
 
 fun main() {
     val edges = listOf(
@@ -15,14 +17,10 @@ fun main() {
         Triple(11, 'E', 'G'),
         Triple(9, 'G', 'F')
     )
-
-
     prim('A', edges)
-
 }
 
-fun prim(startNode: Char, edges: List<Triple<Int, Char, Char>>) {
-
+fun prim(startNode: Char, edges: List<Triple<Int, Char, Char>>): MutableList<Triple<Int, Char, Char>> {
     // 노드에 인접한 간선 정보를 저장
     val adjacentEdges = mutableMapOf<Char, MutableList<Triple<Int, Char, Char>>>()
 
@@ -31,9 +29,15 @@ fun prim(startNode: Char, edges: List<Triple<Int, Char, Char>>) {
         adjacentEdges[n2]?.add(Triple(w, n2, n1)) ?: run { adjacentEdges[n2] = mutableListOf(Triple(w, n2, n1)) }
     }
 
-    val connectedNode = mutableListOf(startNode)
-    var edgeList = mutableListOf<Triple<Int, Char, Char>>()
+    val connectedNode = mutableListOf(startNode) //연결된 노드 정보를 저장.
 
+    val edgeList = TreeSet<Triple<Int, Char, Char>>(kotlin.Comparator { o1, o2 ->       //간선 리스트를 저장.
+        when {
+            o1.first < o2.first -> -1
+            o1.first < o2.first -> 1
+            else -> 0
+        }
+    })
 
     adjacentEdges[startNode]?.forEach {
         edgeList.add(it)
@@ -42,12 +46,13 @@ fun prim(startNode: Char, edges: List<Triple<Int, Char, Char>>) {
     val mst = mutableListOf<Triple<Int, Char, Char>>()
 
     while (edgeList.isNotEmpty()) {
-        val (w, n1, n2) = edgeList.poll()
+        val (w, n1, n2) = edgeList.pollFirst()
 
         if (n2 !in connectedNode) {
             connectedNode.add(n2)
             mst.add(Triple(w, n1, n2))
 
+            // 선택된 간선과 연결된 간선 정보를 간선 리스트에 저장.
             for (edge in adjacentEdges[n2]!!) {
                 if (edge.third !in connectedNode) {
                     edgeList.add(edge)
@@ -55,16 +60,8 @@ fun prim(startNode: Char, edges: List<Triple<Int, Char, Char>>) {
             }
         }
 
-        edgeList.sortBy { it.first }
     }
-
-    println(mst)
-
+    return mst
 }
 
-fun <T> MutableList<T>.poll(): T {
-    val value = this.first()
-    this.removeFirst()
-    return value
-}
 

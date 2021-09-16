@@ -27,8 +27,98 @@ fun main() {
     )
 
     println(dijkstra(distanceArray, queue, graph))
+    println(dijkstraWhile(graph))
 
+    val bfsGraph = mapOf(
+        'A' to charArrayOf('B', 'C'),
+        'B' to charArrayOf('A', 'D'),
+        'C' to charArrayOf('A', 'G', 'H', 'I'),
+        'D' to charArrayOf('B', 'E', 'F'),
+        'E' to charArrayOf('D'),
+        'F' to charArrayOf('D'),
+        'G' to charArrayOf('C'),
+        'H' to charArrayOf('C'),
+        'I' to charArrayOf('C', 'J'),
+        'J' to charArrayOf('I'),
+    )
 
+    println(bfsWhile(bfsGraph))
+    println(dfsWhile(bfsGraph))
+}
+
+fun dijkstraWhile(graph: Map<Char, Map<Char, Int>>): MutableMap<Char, Int> {
+
+    val distances = graph.map {
+        it.key to Float.POSITIVE_INFINITY.toInt()
+    }.toMap().toMutableMap()
+
+    val needVisit = TreeSet<Pair<Char, Int>> { o1, o2 ->
+        when {
+            o1.second < o2.second -> -1
+            o1.second > o2.second -> 1
+            else -> 0
+        }
+    }
+
+    distances['A'] = 0
+    needVisit.add(Pair('A', 0))
+
+    while (needVisit.isNotEmpty()) {
+        val (popNode, popDistance) = needVisit.pollFirst()
+
+        graph[popNode]?.forEach {
+            val d = it.value + popDistance
+            if (distances[it.key]!! > d) {
+                distances[it.key] = d
+                needVisit.add(Pair(it.key, d))
+            }
+        }
+    }
+
+    return distances
+}
+
+fun bfsWhile(graph: Map<Char, CharArray>): Queue<Char> {
+
+    val visited: Queue<Char> = LinkedList()
+    val needVisit: Queue<Char> = LinkedList()
+
+    needVisit.offer('A')
+
+    while (needVisit.isNotEmpty()) {
+        val pop = needVisit.poll()
+
+        if (pop !in visited) {
+            visited.add(pop)
+
+            graph[pop]?.forEach {
+                needVisit.offer(it)
+            }
+        }
+    }
+    return visited
+}
+
+fun dfsWhile(graph: Map<Char, CharArray>): Queue<Char> {
+
+    val visited: Queue<Char> = LinkedList()
+    val needVisit: Stack<Char> = Stack()
+
+    needVisit.push('A')
+
+    while (needVisit.isNotEmpty()) {
+        val pop = needVisit.pop()
+
+        if (pop !in visited) {
+            visited.add(pop)
+
+            graph[pop]?.forEach {
+                needVisit.push(it)
+            }
+        }
+    }
+
+    return visited
 }
 
 fun dijkstra(
@@ -56,8 +146,8 @@ fun dijkstra(
 }
 
 
-fun bfs(needVisit: LinkedList<Char>, visited: LinkedList<Char>, graph: Map<Char, CharArray>) {
-    
+tailrec fun bfs(needVisit: LinkedList<Char>, visited: LinkedList<Char>, graph: Map<Char, CharArray>) {
+
     if (needVisit.isEmpty()) {
         return
     }
