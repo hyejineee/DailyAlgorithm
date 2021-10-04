@@ -20,6 +20,5 @@ fun scale(numbers: IntArray): String {
             return "mixed"
         }
     }
-
     return if (numbers.first() == 1) "ascending" else "descending"
 }

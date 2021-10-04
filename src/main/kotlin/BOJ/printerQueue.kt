@@ -24,22 +24,20 @@ fun printerQueue(count: Int, doc: Int, priority: IntArray): Int {
     (0 until count).forEach {
         q.add(Pair(priority[it], it))
     }
-
-    var printed = -1
+    
     var c = 0
 
-    while (printed != doc) {
-
+    while (true) {
         val d = q.removeFirst()
 
         if ((q.count { it.first > d.first }) > 0) {
             q.add(d)
         } else {
             c++
-            printed = d.second
+            if (d.second == doc) {
+                return c
+            }
         }
-
     }
 
-    return c
 }

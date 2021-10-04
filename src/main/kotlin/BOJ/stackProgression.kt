@@ -31,14 +31,12 @@ fun stackProgression(p: IntArray): MutableList<String> {
     var i = 1
 
     while (pCopy.isNotEmpty()) {
-
-
+        
         while (i <= pCopy.first()) {
             s.push(i)
             i++
             r.add("+")
         }
-
 
         if (s.peek() == pCopy.first()) {
             s.pop()
