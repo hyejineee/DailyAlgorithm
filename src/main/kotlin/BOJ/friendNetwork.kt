@@ -51,7 +51,6 @@ fun friendNetwork(network: List<List<String>>): List<Int> {
     }
 
     network.forEach {
-
         union(it[0], it[1], parent, rank)
         println(rank[find(it.first(), parent)])
     }
@@ -73,7 +72,6 @@ fun union(node1: String, node2: String, parent: MutableMap<String, String>, rank
         parent[p2] = p1
         rank[p1] = rank[p1]!!.plus(rank[p2]!!)
     }
-
 }
 
 
