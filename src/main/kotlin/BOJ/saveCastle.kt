@@ -23,7 +23,6 @@ fun main() {
         }
 
         bw.write("${maxOf(c.filter { 'X' !in it }.count(), r.filter { 'X' !in it }.count())}")
-
         bw.flush()
         bw.close()
     }
