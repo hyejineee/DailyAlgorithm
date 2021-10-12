@@ -17,7 +17,71 @@ fun main() {
     )
 
     println(kruskal(vertices, edges))
+    println(k(vertices, edges))
 
+}
+
+
+/**
+ *  크루스칼 복습하기
+ *  - 크루스칼 : 최소신장트리를 찾기 위한 알고리즘
+ *  - union- find 알고리즘을 사용한다.
+ *  - find할 때 연결되 상위 노드를 한번에 알기위해 path-compression알고리즘을 사용한다.
+ *  - union시 union-by-rank를 사용한다.
+ *  - 간선 비용이 적은 순으로 탐색
+ * */
+
+fun k(vertices: List<Char>, edges: List<Triple<Int, Char, Char>>): MutableList<Triple<Int, Char, Char>> {
+
+    // 연결된 최상위 노드 정보를 저장
+    val parent = mutableMapOf<Char, Char>()
+    // union시 필요한 rank값을 저장
+    val rank = mutableMapOf<Char, Int>()
+    // mst를 저장
+    val mst = mutableListOf<Triple<Int, Char, Char>>()
+
+    vertices.forEach {
+        parent[it] = it
+        rank[it] = 0
+    }
+
+    val sorted = edges.sortedBy { it.first }
+
+    sorted.forEach {
+        val (w, node, linkedNode) = it
+
+        if (find2(node, parent) != find2(linkedNode, parent)) {
+            union(node, linkedNode, parent, rank)
+            mst.add(it)
+        }
+    }
+
+    return mst
+}
+
+
+fun find2(node: Char, parents: MutableMap<Char, Char>): Char {
+    if (node != parents[node]) {
+        parents[node] = find2(parents[node]!!, parents)
+    }
+
+    return parents[node]!!
+}
+
+fun union2(node1: Char, node2: Char, rank: MutableMap<Char, Int>, parent: MutableMap<Char, Char>) {
+    val r1 = parent[node1]!!
+    val r2 = parent[node2]!!
+
+    if (rank[r1]!! > rank[r2]!!) {
+        parent[r2] = r1
+    } else {
+        parent[r1] = r2
+    }
+
+    if (rank[r1]!! == rank[r2]!!) {
+        rank[r1]!!.plus(1)
+        parent[r2] = r1
+    }
 }
 
 fun kruskal(vertices: List<Char>, edges: List<Triple<Int, Char, Char>>): MutableList<Triple<Int, Char, Char>> {
