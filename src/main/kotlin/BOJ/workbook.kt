@@ -14,7 +14,6 @@ fun main() {
 
         val nodes = mutableMapOf<Int, MutableList<Int>>()
         val inDegree = MutableList(n+1){0}
-
         val heap = PriorityQueue<Int>()
 
         (1 .. n).forEach {
