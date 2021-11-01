@@ -54,8 +54,6 @@ fun main() {
 
         println("%.2f".format(coast))
 
-
-
     }
 }
 private fun find(node:Int, parent:MutableMap<Int,Int>): Int {
