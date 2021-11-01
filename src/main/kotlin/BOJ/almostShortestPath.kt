@@ -56,7 +56,7 @@ fun main() {
     }
 }
 
-private fun dijkstra(startNode: Int, g: MutableMap<Int, MutableList<List<Int>>>, distances: MutableMap<Int, Int>, dropped:List<List<Boolean>>) {
+fun dijkstra(startNode: Int, g: MutableMap<Int, MutableList<List<Int>>>, distances: MutableMap<Int, Int>, dropped:List<List<Boolean>>) {
     val needVisit = PriorityQueue<List<Int>>(compareBy { it.last() })
     needVisit.add(listOf(startNode, 0))
 
