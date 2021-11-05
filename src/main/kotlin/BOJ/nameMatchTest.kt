@@ -36,32 +36,19 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
         this['Z'] = 1
     }
 
-    val matchName = if(n > m){
-        name1.foldIndexed(""){ index, acc, c ->
-            if(index in name2.indices){
-                acc+"$c${name2[index]}"
-            }else{
-                acc+"$c"
-            }
-        }
-
-    }else{
-        name2.foldIndexed(""){ index, acc, c ->
-            if(index in name1.indices){
-                acc+"${name1[index]}$c"
-            }else{
-                acc+"$c"
-            }
-        }
+    var matchName = ""
+    val min = minOf(n,m)
+    for(i in 0 until min){
+        matchName += "${name1[i]}${name2[i]}"
     }
+
+    matchName += name1.substring(min) + name2.substring(min)
 
     var numbers = matchName.map{ map[it]!!}.toMutableList()
 
     while (numbers.size >2){
         numbers = calculate(numbers)
     }
-
-
 
     if(numbers.first() == 0){
         println("${numbers.last()}%")
