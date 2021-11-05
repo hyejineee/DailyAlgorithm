@@ -37,32 +37,28 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     }
 
     var matchName = ""
-    val min = minOf(n,m)
-    for(i in 0 until min){
+    val min = minOf(n, m)
+    for (i in 0 until min) {
         matchName += "${name1[i]}${name2[i]}"
     }
 
     matchName += name1.substring(min) + name2.substring(min)
 
-    var numbers = matchName.map{ map[it]!!}.toMutableList()
+    var numbers = matchName.map { map[it]!! }.toMutableList()
 
-    while (numbers.size >2){
+    while (numbers.size > 2) {
         numbers = calculate(numbers)
     }
 
-    if(numbers.first() == 0){
-        println("${numbers.last()}%")
-    }else{
-        val percent = numbers.joinToString("")
-        println("${percent}%")
-    }
+    val percent = numbers.joinToString("").toInt()
+    println("%d".format(percent)+"%")
 }
 
 private fun calculate(numbers: MutableList<Int>): MutableList<Int> {
     val newNumbers = mutableListOf<Int>()
-    for(i in 0 until numbers.size-1){
-        var next = numbers[i] + numbers[i+1]
-        if( next>=10){
+    for (i in 0 until numbers.size - 1) {
+        var next = numbers[i] + numbers[i + 1]
+        if (next >= 10) {
             next %= 10
         }
         newNumbers.add(next)
