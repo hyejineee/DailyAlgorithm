@@ -12,7 +12,7 @@ fun main() {
         val bw = BufferedWriter(OutputStreamWriter(System.out))
 
         val (n,m ) = readLine().split(" ").map { it.toInt() }
-        val groups = mutableListOf<Group>()
+        val groups = mutableMapOf<String, MutableList<String>>()
 
         (1..n).forEach {
             val groupName = readLine()
@@ -23,7 +23,7 @@ fun main() {
             }
 
             members.sort()
-            groups.add(Group(groupName, headcount, members))
+            groups[groupName] = members
         }
 
         (1..m).forEach {
@@ -31,12 +31,12 @@ fun main() {
 
             when(readLine().toInt()){
                 0-> {
-                    groups.find { it.name == name }?.members?.forEach {
+                    groups[name]?.forEach {
                         bw.write("$it \n")
                     }
                 }
                 else ->{
-                    val find = groups.find { name in it.members }?.name
+                    val find = groups.entries.find { name in it.value }?.key
                     bw.write("$find\n")
                 }
             }
