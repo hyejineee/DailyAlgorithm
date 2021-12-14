@@ -49,7 +49,7 @@ fun getSubMatrix(x1: Int, y1: Int, x2: Int, y2: Int, origin: Array<IntArray>): A
     return sub
 }
 
-fun rotateBorder(sub: Array<IntArray>, rows: Int, columns: Int, origin:Array<IntArray>): Pair<Array<IntArray>,Int>{
+fun rotateBorder(sub: Array<IntArray>, rows: Int, columns: Int): Pair<Array<IntArray>,Int>{
     var rotated = sub.copyOf()
     var subCopy = sub.copyOf()
     var swaped = intArrayOf(0)
