@@ -3,6 +3,8 @@ package Programmers
 
 fun wordConversion(begin: String, target: String, words: Array<String>): Int {
 
+    if(target !in words) return 0
+
     val result = mutableListOf<List<String>>()
     dfs(begin, mutableListOf(), words, target, result)
 
