@@ -9,16 +9,7 @@ fun expressedAsN(N: Int, number: Int): Int {
         }
     }
 
-    for (i in arrayOf("+", "-", "/", "*")) {
-        val r = when (i) {
-            "+" -> N + N
-            "-" -> N - N
-            "/" -> N / N
-            "*" -> N * N
-            else -> 0
-        }
-        arr[2].add(r)
-    }
+    arr[2].addAll(arrayOf(N * 2, 0, 1, N * N))
 
     if (N == number) return 1
     if (number in arr[2]) return 2
@@ -42,15 +33,10 @@ private fun combination(arr1: MutableSet<Int>, arr2: MutableSet<Int>, arr: Mutab
             arr.add(i - j)
             arr.add(i * j)
 
-            if (j != 0) {
-                arr.add(i / j)
+            arr.add(j - i)
+            if (i != 0) {
+                arr.add(j / i)
             }
-        }
-    }
-
-    for (i in arr2) {
-        for (j in arr1) {
-            arr.add(i - j)
             if (j != 0) {
                 arr.add(i / j)
             }
