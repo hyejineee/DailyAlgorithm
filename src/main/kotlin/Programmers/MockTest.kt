@@ -1,5 +1,7 @@
 package Programmers
 
+private val ints = arrayOf(3, 3, 1, 1, 2, 2, 4, 4, 5, 5)
+
 fun mockTest(answers: IntArray): IntArray {
 
     val supo1 = arrayOf(1, 2, 3, 4, 5)
