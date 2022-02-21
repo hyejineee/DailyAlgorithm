@@ -15,3 +15,15 @@ fun change(n: Int): Int {
 
     return count
 }
+
+fun lawOfLargeNumber(m: Int, k: Int, numbers: IntArray): Int {
+    numbers.sortDescending()
+
+    val max = numbers[0]
+    val second = numbers[1]
+    val count = (m / k) * k
+
+    return (count * max) + ((m - count) * second)
+}
+
+
