@@ -34,4 +34,11 @@ internal class GreedyKtTest{
             )
         )).isEqualTo(2)
     }
+
+    @Test
+    fun untilBecome1Test(){
+        assertThat(untilBecomes1(17, 4)).isEqualTo(3)
+        assertThat(untilBecomes1(25, 5)).isEqualTo(2)
+        assertThat(untilBecomes1(25, 3)).isEqualTo(6)
+    }
 }

@@ -30,3 +30,16 @@ fun numberCardGame(cards: Array<IntArray>): Int = cards.map {
     it.sort()
     it[0]
 }.maxBy { it } ?: -1
+
+fun untilBecomes1(n: Int, k: Int): Int {
+    var become = n
+    var count = 0
+
+    while (true) {
+        if(become %k ==0) become/=k else become-=1
+        count++
+        if(become == 1) break
+    }
+
+    return count
+}
