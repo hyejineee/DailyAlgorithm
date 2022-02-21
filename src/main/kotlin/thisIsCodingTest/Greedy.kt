@@ -26,4 +26,7 @@ fun lawOfLargeNumber(m: Int, k: Int, numbers: IntArray): Int {
     return (count * max) + ((m - count) * second)
 }
 
-
+fun numberCardGame(cards: Array<IntArray>): Int = cards.map {
+    it.sort()
+    it[0]
+}.maxBy { it } ?: -1

@@ -17,5 +17,21 @@ internal class GreedyKtTest{
         assertThat(lawOfLargeNumber(7,2, intArrayOf(3,4,3,4,3))).isEqualTo(28)
     }
 
+    @Test
+    fun numberCardGameTest(){
+        assertThat(numberCardGame(
+            arrayOf(
+                intArrayOf(7,3,1,8),
+                intArrayOf(3,3,3,4)
+            )
+        )).isEqualTo(3)
 
+        assertThat(numberCardGame(
+            arrayOf(
+                intArrayOf(3,1,2),
+                intArrayOf(4,1,4),
+                intArrayOf(2,2,2)
+            )
+        )).isEqualTo(2)
+    }
 }
