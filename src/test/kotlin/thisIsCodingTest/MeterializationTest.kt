@@ -17,4 +17,9 @@ internal class MeterializationTest{
     fun timeTest(){
         assertThat(methods.time(5)).isEqualTo(11475)
     }
+
+    @Test
+    fun royalKnightTest(){
+        assertThat(methods.royalKnight("a1")).isEqualTo(2)
+    }
 }
