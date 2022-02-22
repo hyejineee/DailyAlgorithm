@@ -36,4 +36,16 @@ class Meterialization {
         }
         return intArrayOf(i,j)
     }
+
+    fun time(n:Int): Int {
+        var count = 0
+        for(i in 0 .. n){
+            for(j in 0 until 60){
+                for (k in 0 until 60){
+                    if("$i $j $k".contains("3")) count++
+                }
+            }
+        }
+        return count
+    }
 }

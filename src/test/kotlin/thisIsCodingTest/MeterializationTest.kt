@@ -12,4 +12,9 @@ internal class MeterializationTest{
     fun UDLRTest(){
         assertThat(methods.UDLR(5, "R R R U D D")).isEqualTo(intArrayOf(3,4))
     }
+
+    @Test
+    fun timeTest(){
+        assertThat(methods.time(5)).isEqualTo(11475)
+    }
 }
