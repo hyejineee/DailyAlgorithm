@@ -22,4 +22,17 @@ internal class MeterializationTest{
     fun royalKnightTest(){
         assertThat(methods.royalKnight("a1")).isEqualTo(2)
     }
+
+    @Test
+    fun gameDevelopTest(){
+        assertThat(methods.gameDevelop(
+            intArrayOf(1,1), 0,
+            arrayOf(
+                intArrayOf(1,1,1,1),
+                intArrayOf(1,0,0,1),
+                intArrayOf(1,1,0,1),
+                intArrayOf(1,1,1,1),
+            )
+        )).isEqualTo(3)
+    }
 }
