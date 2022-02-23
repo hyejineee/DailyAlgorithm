@@ -2,13 +2,13 @@ package Programmers
 
 fun bestAlbum(genres: Array<String>, plays: IntArray): IntArray {
 
-    val map = mutableMapOf<String, MutableList<IntArray>>()
-
-    for (i in genres.indices) {
-        val g = genres[i]
-        val p = plays[i]
-        map[g]?.add(intArrayOf(i, p)) ?: run { map[g] = mutableListOf(intArrayOf(i, p)) }
-    }
+//    val map = mutableMapOf<String, MutableList<IntArray>>()
+//
+//    for (i in genres.indices) {
+//        val g = genres[i]
+//        val p = plays[i]
+//        map[g]?.add(intArrayOf(i, p)) ?: run { map[g] = mutableListOf(intArrayOf(i, p)) }
+//    }
 
     return genres.indices.groupBy { genres[it] }
         .toList()
