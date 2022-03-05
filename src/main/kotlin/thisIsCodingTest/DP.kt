@@ -1,4 +1,4 @@
 package thisIsCodingTest
 
-
-internal class DPTest
+class DP {
+}
