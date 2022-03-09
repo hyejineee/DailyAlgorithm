@@ -46,4 +46,10 @@ internal class GreedyKtTest{
     fun adventurersGuideTest(){
         assertThat(adventurersGuide(5, intArrayOf(2,3,1,2,2))).isEqualTo(2)
     }
+
+    @Test
+    fun multiplyOrAddTest(){
+        assertThat(multiplyOrAdd("02984")).isEqualTo(576)
+        assertThat(multiplyOrAdd("567")).isEqualTo(210)
+    }
 }

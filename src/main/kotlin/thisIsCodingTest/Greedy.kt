@@ -1,5 +1,7 @@
 package thisIsCodingTest
 
+import java.util.*
+
 fun change(n: Int): Int {
     var remain = n
     val changes = intArrayOf(500, 100, 50, 10)
@@ -36,28 +38,28 @@ fun untilBecomes1(n: Int, k: Int): Int {
     var count = 0
 
     while (true) {
-        if(become %k ==0) become/=k else become-=1
+        if (become % k == 0) become /= k else become -= 1
         count++
-        if(become == 1) break
+        if (become == 1) break
     }
 
     return count
 }
 
-fun adventurersGuide(n:Int, fears:IntArray): Int {
-    val check = BooleanArray(fears.size){ false}
+fun adventurersGuide(n: Int, fears: IntArray): Int {
+    val check = BooleanArray(fears.size) { false }
     fears.sort()
-    var count =0
-    for(i in fears.indices){
+    var count = 0
+    for (i in fears.indices) {
         val members = mutableListOf<Int>()
 
-        for(j in 0..i){
-            if(fears[j] <= fears[i] && check[j].not()){
-               members.add(j)
+        for (j in 0..i) {
+            if (fears[j] <= fears[i] && check[j].not()) {
+                members.add(j)
             }
         }
 
-        if(members.size >= fears[i]){
+        if (members.size >= fears[i]) {
             members.forEach {
                 check[it] = true
             }
@@ -67,3 +69,30 @@ fun adventurersGuide(n:Int, fears:IntArray): Int {
     }
     return count
 }
+
+fun multiplyOrAdd(nums: String): Int {
+
+    val ops = mutableListOf<Char>()
+    val numbers = nums.map { Character.getNumericValue(it)}
+
+    for (i in numbers.indices) {
+        if (i == numbers.size - 1){
+            ops.add(Char.MAX_VALUE)
+            break
+        }
+
+        ops.add(if (numbers[i] > 0) '*' else '+')
+    }
+
+    var result = numbers[0]
+    for (i in 1 until nums.length){
+        val op = ops[i-1]
+        when(op){
+            '*' -> result *=numbers[i]
+            else -> result += numbers[i]
+        }
+    }
+
+    return result
+}
+
