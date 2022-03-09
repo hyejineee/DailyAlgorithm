@@ -43,3 +43,27 @@ fun untilBecomes1(n: Int, k: Int): Int {
 
     return count
 }
+
+fun adventurersGuide(n:Int, fears:IntArray): Int {
+    val check = BooleanArray(fears.size){ false}
+    fears.sort()
+    var count =0
+    for(i in fears.indices){
+        val members = mutableListOf<Int>()
+
+        for(j in 0..i){
+            if(fears[j] <= fears[i] && check[j].not()){
+               members.add(j)
+            }
+        }
+
+        if(members.size >= fears[i]){
+            members.forEach {
+                check[it] = true
+            }
+            count++
+        }
+
+    }
+    return count
+}

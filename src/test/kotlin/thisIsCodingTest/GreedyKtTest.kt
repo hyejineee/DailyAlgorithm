@@ -41,4 +41,9 @@ internal class GreedyKtTest{
         assertThat(untilBecomes1(25, 5)).isEqualTo(2)
         assertThat(untilBecomes1(25, 3)).isEqualTo(6)
     }
+
+    @Test
+    fun adventurersGuideTest(){
+        assertThat(adventurersGuide(5, intArrayOf(2,3,1,2,2))).isEqualTo(2)
+    }
 }
