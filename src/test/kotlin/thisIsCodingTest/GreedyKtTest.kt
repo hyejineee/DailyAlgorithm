@@ -58,4 +58,9 @@ internal class GreedyKtTest{
         assertThat(thisIsCodingTest.flipString("0001100")).isEqualTo(1)
         assertThat(thisIsCodingTest.flipString("11001100110011000001")).isEqualTo(4)
     }
+
+    @Test
+    fun noMadeMoney(){
+        assertThat(notMadeMoney(5, intArrayOf(3,2,1,1,9))).isEqualTo(8)
+    }
 }

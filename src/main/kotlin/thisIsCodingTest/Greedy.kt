@@ -116,3 +116,16 @@ fun flipString(s:String):Int{
     return min(zeroCount, oneCount)
 }
 
+fun notMadeMoney(n:Int,units:IntArray):Int{
+    var target = 1
+    units.sort()
+
+    for(i in units){
+        println("target :$target, i:$i")
+        if(target<i){
+            break
+        }
+        target+=i
+    }
+    return target
+}
