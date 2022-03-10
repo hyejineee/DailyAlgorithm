@@ -52,4 +52,10 @@ internal class GreedyKtTest{
         assertThat(multiplyOrAdd("02984")).isEqualTo(576)
         assertThat(multiplyOrAdd("567")).isEqualTo(210)
     }
+
+    @Test
+    fun flipString(){
+        assertThat(thisIsCodingTest.flipString("0001100")).isEqualTo(1)
+        assertThat(thisIsCodingTest.flipString("11001100110011000001")).isEqualTo(4)
+    }
 }

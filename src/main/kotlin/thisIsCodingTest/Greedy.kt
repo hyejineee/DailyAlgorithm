@@ -1,6 +1,8 @@
 package thisIsCodingTest
 
 import java.util.*
+import kotlin.math.max
+import kotlin.math.min
 
 fun change(n: Int): Int {
     var remain = n
@@ -94,5 +96,23 @@ fun multiplyOrAdd(nums: String): Int {
     }
 
     return result
+}
+
+fun flipString(s:String):Int{
+
+    var cur = s.first()
+    var zeroCount = 0
+    var oneCount = 0
+
+    for(i in s.indices){
+        if(cur == s[i]) continue
+
+        if(cur == '0') zeroCount++ else oneCount++
+        cur = s[i]
+    }
+
+    if(s.last() == cur && cur =='0') zeroCount++ else oneCount++
+
+    return min(zeroCount, oneCount)
 }
 
