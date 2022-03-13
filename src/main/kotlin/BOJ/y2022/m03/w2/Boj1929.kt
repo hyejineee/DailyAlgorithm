@@ -12,7 +12,6 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val primes = BooleanArray(n + 1) { true }
     primes[0] = false
     primes[1] = false
-    primes[2] = true
 
     for (i in 2..n) {
         if (primes[i].not()) continue
