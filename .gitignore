@@ -7,3 +7,5 @@ out/
 src/main/Kotlin/NaverWebtoon
 src/test/kotlin/NaverWebtoon
 src/test/kotlin/sk/
+
+*.DS_Store
