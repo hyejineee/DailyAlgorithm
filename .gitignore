@@ -1,0 +1,14 @@
+.idea/
+.gradle/
+
+build/
+out/
+
+src/main/Kotlin/NaverWebtoon
+src/test/kotlin/NaverWebtoon
+src/test/kotlin/sk
+src/main/kotlin/sk
+src/test/kotlin/soca
+src/main/kotlin/soca
+
+*.DS_Store
