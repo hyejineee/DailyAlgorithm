@@ -4,7 +4,7 @@ import Programmers.count
 
 class Meterialization {
     fun UDLR(n: Int, plan: String): IntArray {
-        val board = Array(n + 2) { IntArray(n + 2) { 0 } }
+        val board = Array(n +1) { IntArray(n + 1) { 0 } }
 
         var i = 1
         var j = 1
@@ -14,26 +14,21 @@ class Meterialization {
             if (p == "R") {
                 if (j + 1 > n) continue
                 j += 1
-
-                continue
             }
 
             if (p == "U") {
                 if (i - 1 < 1) continue
                 i -= 1
-                continue
             }
 
             if (p == "L") {
                 if (j - 1 < 0) continue
                 j -= 1
-                continue
             }
 
             if (p == "D") {
                 if (i + 1 > n) continue
                 i += 1
-                continue
             }
         }
         return intArrayOf(i, j)
@@ -64,8 +59,10 @@ class Meterialization {
             intArrayOf(1, 2),
         )
 
-        val j = position.toCharArray()[0].toInt() - 96
-        val i = Character.getNumericValue(position.toCharArray()[1])
+        val positions = position.toCharArray()
+        val j = positions[0].toInt() - 96
+        val i = Character.getNumericValue(positions[1])
+
         var count = 0
         candidates.forEach {
             val (ni, nj) = it
@@ -120,8 +117,7 @@ class Meterialization {
                 if(available[nx][ny]) {
                     cx = nx
                     cy = ny
-                }
-                else{
+                } else{
                     break
                 }
 
