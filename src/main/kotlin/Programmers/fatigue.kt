@@ -1,7 +1,6 @@
 package Programmers
 
 fun fatigue(k: Int, dungeons: Array<IntArray>): Int {
-
     val counts = mutableSetOf<Int>()
     dfs(k, dungeons, counts, 0)
     return counts.maxOrNull() ?: -1
