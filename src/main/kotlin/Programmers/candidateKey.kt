@@ -3,7 +3,7 @@ package Programmers
 import thisIsCodingTest.untilBecomes1
 
 fun candidateKey(relation: Array<Array<String>>): Int {
-    val idxs = List<Int>(relation[0].size) { it }
+    val idxs = List(relation[0].size) { it }
     val keys = mutableListOf<List<Int>>()
 
     for (i in 1 until relation.size) {
@@ -23,9 +23,7 @@ private fun checkMin(combi: List<Int>, unique: MutableList<List<Int>>): Boolean 
     for (i in 1..combi.size) {
         val c = mutableListOf<List<Int>>()
         combination(c, combi, BooleanArray(combi.size) { false }, 0, i)
-        c.forEach {
-            result.add(it)
-        }
+        result.addAll(c)
     }
 
     result.forEach {
@@ -44,8 +42,7 @@ private fun checkUnique(combi: List<Int>, unique: MutableList<List<Int>>, relati
         }
         keys.add(cs)
     }
-    println("uni : ${unique}")
-    println("combi : $combi makes : $keys")
+
     if (keys.size == relation.size) unique.add(combi)
 }
 
