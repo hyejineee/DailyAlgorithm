@@ -8,16 +8,18 @@ import kotlin.math.abs
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val bw = BufferedWriter(OutputStreamWriter(System.out))
+    val n = readLine().toInt()
 
-    val nArr = Array<Int?>(1000001) { null }
-    val pArr = Array<Int?>(1000001) { null }
+    val arr = IntArray(10001){0}
 
-    for (i in 0 until readLine().toInt()) {
-        val n = readLine().toInt()
-        if (n < 0) nArr[abs(n)] = n else pArr[n] = n
+    for (i in 0 until n){
+        arr[readLine().toInt()]++
     }
 
-    nArr.reversed().plus(pArr).filterNotNull().forEach { bw.write("$it\n") }
+    for (i in arr.indices){
+        if(arr[i] == 0) continue
+        repeat(arr[i]){bw.write("$i\n")}
+    }
 
     bw.flush()
     bw.close()
