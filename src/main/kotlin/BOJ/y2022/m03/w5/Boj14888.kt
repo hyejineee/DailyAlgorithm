@@ -55,6 +55,4 @@ private fun dfs(level: Int, result: Int, n: Int, counts: IntArray, nums: IntArra
         dfs(level + 1, result / nums[level], n, counts, nums)
         counts[3] = counts[3] + 1
     }
-
-
 }
