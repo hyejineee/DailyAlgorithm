@@ -9,7 +9,11 @@ import java.io.OutputStreamWriter
 val bw = BufferedWriter(OutputStreamWriter(System.out))
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val (n, m) = readLine().split(" ").map { it.toInt() }
-    combination(m, m,  BooleanArray(n + 1), mutableListOf(), n)
+
+    for (i in 1..n) {
+        combination(m, m-1, BooleanArray(n + 1), mutableListOf(i), n)
+    }
+
     bw.flush()
     bw.close()
 }
@@ -23,14 +27,15 @@ private fun combination(
 ) {
     if (curLevel == 0) {
         arr.forEach { bw.write("$it ") }
+        bw.write("\n")
         return
     } else {
         for (i in 1..range) {
-            visited[i] = true
-            arr.add(i)
-            combination(level, curLevel - 1,  visited, arr, range)
-            arr.removeLast()
-            visited[i] = false
+            if (i >= arr.last()) {
+                arr.add(i)
+                combination(level, curLevel - 1, visited, arr, range)
+                arr.removeLast()
+            }
         }
     }
 }
