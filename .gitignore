@@ -10,5 +10,8 @@ src/test/kotlin/sk
 src/main/kotlin/sk
 src/test/kotlin/soca
 src/main/kotlin/soca
+src/main/kotlin/line
+src/test/kotlin/line
+
 
 *.DS_Store
