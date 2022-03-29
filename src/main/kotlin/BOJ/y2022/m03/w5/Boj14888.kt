@@ -41,7 +41,6 @@ private fun dfs(level: Int, result: Int, n: Int, counts: IntArray, nums: IntArra
         counts[1] = counts[1] - 1
         dfs(level + 1, result - nums[level], n, counts, nums)
         counts[1] = counts[1] + 1
-
     }
 
     if (counts[2] > 0) {
