@@ -11,7 +11,7 @@ fun main() {
 
         for (t in 0 until tc) {
             val n = readLine().toInt()
-            val dp = if (n < 11) LongArray(11) { i -> seed[i] } else LongArray(n + 1) { i ->
+            val dp = if (n < 11) seed else LongArray(n + 1) { i ->
                 if (i <= 10) seed[i] else 0
             }
 
