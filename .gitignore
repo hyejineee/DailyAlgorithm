@@ -15,3 +15,5 @@ src/test/kotlin/line
 
 
 *.DS_Store
+/src/main/kotlin/w/
+/src/test/kotlin/w/
