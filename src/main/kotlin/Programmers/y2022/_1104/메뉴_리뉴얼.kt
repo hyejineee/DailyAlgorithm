@@ -1,19 +1,44 @@
 package Programmers.y2022._1104
 
-fun 할인행사(want : Array<String>, number : IntArray, discount : Array<String>): Int {
-    val map = mutableMapOf<String, Int>()
-    want.forEachIndexed { index, s ->
-        map[s] = number[index]
-    }
+import java.util.StringJoiner
 
-    var count = 0
-    for(i in 0..discount.size -10){
-        val copy = map.toMutableMap()
-        for(j in 0 until 10 ){
-            copy[discount[i+j]] = copy[discount[i+j]]?.minus(1)?:-1
+fun 메뉴_리뉴얼(orders: Array<String>, course: IntArray): Array<String> {
+    val result = mutableListOf<String>()
+
+    course.forEach { num->
+        val combi = orders.map {
+            val result = mutableListOf<String>()
+            combination(it.toCharArray().sortedArray(), 0, mutableListOf(), result,num)
+            result
         }
 
-        if(copy.all { it.value === 0 }) count++
+        var max = 0
+
+        countMenu(combi.flatten().toTypedArray())
+            .filter { it.second >=2 }
+            .sortedByDescending { it.second }
+            .forEachIndexed { index, pair ->
+                if(index == 0) max = pair.second
+
+                if(max <= pair.second){
+                    result.add(pair.first)
+                }
+            }
     }
-    return count
+    return result.sorted().toTypedArray()
+}
+
+fun countMenu(arr : Array<String>): List<Pair<String, Int>> = arr.groupBy { it }.map { Pair(it.key, it.value.size) }
+
+fun combination(arr: CharArray, index: Int, temp: MutableList<Char>, result: MutableList<String>, limit: Int) {
+    if(temp.size == limit){
+        result.add(temp.joinToString(""))
+        return
+    }
+
+    for(i in index until arr.size){
+        temp.add(arr[i])
+        combination(arr, i +1, temp, result, limit)
+        temp.removeLast()
+    }
 }
